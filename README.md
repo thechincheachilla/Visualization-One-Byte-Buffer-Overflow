@@ -5,7 +5,14 @@ Team members:
 *Annie Denton 
 *Mahda Soltani
 
-Project page: https://cse442-21f.github.io/FP-One-Byte-Buffer-Overflows/  
+Project page: https://thechincheachilla.github.io/Visualization-One-Byte-Buffer-Overflow/
+
+Final project submission for CSE 442 AU2021 Data Visualization.
+This project aims to teach the concept of one-byte-buffer overflow exploits to people
+with basic programming experience. The aim of this visualization is to quickly teach 
+people the high level concepts of this form of attack in order to convince them to adopt
+basic security practices on a daily basis. Unlike a lengthy article, viewers should be able
+to unserstand the basics of one-byte-buffer overflows in 10 minutes or less. 
 
 **Roles and Responsibilities:**
 
