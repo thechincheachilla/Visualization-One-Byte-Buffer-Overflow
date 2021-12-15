@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html xml:lang="en" lang="en">
+<head>
+  <title>CSE442 | FP | Taking Control with "Just a Byte"</title>
+  <style media="all">
+* { padding: 0; margin: 0; }
+ body {
+  margin: 0 auto 0 auto;
+  padding: 0;
+  max-width: 1200px;
+  font-family: "Avenir", "Avenir Next", Helvetica Neue, Arial;
+  font-size: 0.95em;
+}
+ a, a:visited { text-decoration: none; color: #2c9c91; }
+a:hover { text-decoration: underline; color: #17dcff; }
+ h1, h2, h3, h4, h5 {
+  color: #207068;
+  background-color: inherit;
+  font-weight: normal;
+  padding: 0 0 5px 0;
+  margin: 15px 0 0 0;
+  border: none;
+  clear: right;
+}
+h1 { font-size: 24pt; margin:  5px 0 10px 0; line-height: 28px; }
+h2 { font-size: 14pt; margin: 30px 0 15px 0; letter-spacing: 0.01em; border-bottom: 1px solid #ccc;  line-height: 20px;}
+h3 { font-size: 13pt; }
+h4 { font-size: 12pt; }
+h5 { font-size: 11pt; }
+p { margin: 0 0 10px 0; 
+    line-height: 2.0;
+  }
+ .content {
+  margin: 0;
+  padding: 15px 20px;
+  background-color: #ffffff;
+}
+ .title, .title h1, .title a {
+  color: #207068;
+  font-size: 24pt;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+ .footer {
+  border-top: 1px solid #ccc;
+  margin-top: 30px;
+  padding-top: 4px;
+  text-align: right;
+  font-size: 12px;
+}
+.footer a {
+  color: #21346B;
+}
+.footer a:hover {
+  color: #ce3333;
+}
+.intro {
+  overflow: hidden;
+  height: 400px;
+  border:0;
+}
+.stack {
+  overflow: hidden;
+  height: 450px;
+  border:0;
+}
+.array_alloc {
+  overflow: hidden;
+  height: 280px;
+  border:0;
+}
+.shell_code {
+  overflow: hidden;
+  height: 420px;
+  border:0;
+}
+.exploit {
+  overflow: hidden;
+  height: 420px;
+  border:0;
+}
+  </style>
+</head>
+<body>
+<div class="content">
+   <section class="title">
+    <a href="https://cse442-21f.github.io/FP-One-Byte-Buffer-Overflows/">Taking Control with "Just a Byte"</a>
+  </section>
+
+   <section>
+    <p>
+      <strong>Team Members</strong>: Reiden Alexander Chea, Mahda Soltani, Annie Denton
+    </p>
+  </section>
+
+  <section>
+    <h2>Introduction:</h2>
+    <p>As we progress through the modern age of information, technology has become more accessible to the entire world population. 
+      However, the advent of new innovations has the downside of proliferating exploitations that seek to take advantage of vulnerabilities. 
+      Unfortunately, due to the complex and opaque nature of computer security, the majority of people remain uninformed about program safety, 
+      and well-known exploits within the buffer-overflow category continue to take advantage of this lack of information and sufficient security 
+      oversight. As such, we would like to focus on one of the most common forms of attack: the single-byte buffer overflow attack, a form of 
+      attack that allows the attacker to take full control of a user’s program by not only reading but also overwriting memory addresses which 
+      shouldn’t be accessible via the standard program execution flow. In the following sections, we will first walk you through a rudimentary 
+      explanation of the stack, and from there, you will learn how array allocation in C works. Then, you will learn how C arrays are susceptible to security vulnerabilities in 
+      off-by-one errors, and how attackers can take advantage of these vulnerabilities to take over programs using attack SHELL code.
+    </p>
+    <p>Feel free to progress through the modules at your own pace. Modules do not need to be completed in order to move onto the next one;
+    multiple modules can be accessed at the same time.
+    </p>
+  </section>
+
+  <section>
+    <div class = "intro">
+      <iframe width="100%" height="700" frameborder="0" src="https://observablehq.com/embed/@shashnoot/can-you-find-the-vulnerability?cells=animation%2Ctitle%2Cstyles"></iframe>
+    </div>
+    <div class = "stack"> 
+      <iframe width="100%" height="750" frameborder="0" src="https://observablehq.com/embed/@mahda-soltani/the-stack?cells=chart%2Ctitle%2Cbuttons%2Cstyles"></iframe>
+    </div>
+    <div class="array_alloc">
+      <iframe width="100%" height="400" frameborder="0" src="https://observablehq.com/embed/@thechincheachilla/array-allocation?cells=animation%2Ctitle%2Cstyles"></iframe>
+    </div>
+    <div class="shell_code">
+      <iframe width="100%" height="700" frameborder="0" src="https://observablehq.com/embed/@thechincheachilla/shell-code?cells=animation%2Ctitle%2Cstyles"></iframe>
+    </div>
+    <div class="exploit">
+      <iframe width="100%" height="700" frameborder="0" src="https://observablehq.com/embed/@thechincheachilla/the-off-by-one-exploit?cells=animation%2Ctitle%2Cstyles"></iframe>
+    </div>
+  </section>
+
+  <section>
+    <h2>Wrapping Up:</h2> 
+    <p>At this point, we hope that you have gained a basic understanding of how simple the process is for an attacker to take control of a 
+      program and device through a one-byte buffer overflow. Although these types of attacks have been known for decades, and although far 
+      more complex attacks exist with today’s technology, buffer overflow attacks are more prevalent than one might originally expect. As 
+      recently as 2021, buffer overflow exploit vulnerabilities were discovered in a cryptographic library application known as Libgcrypt, 
+      which was discovered by a Google Project Zero researcher. Moreso, Apple themselves discovered a buffer overflow exploit in the kernel 
+      of iOS software which affected all iOS devices. With reports of continual buffer overflow exploits, programmers and general technology 
+      users alike must continue to practice basic computer security. </p>
+  </section>
+
+  <section>
+    <h2>Afterword:</h2>
+    <p>In order to simplify the demonstration of one-byte buffer overflows and capture the main points necessary for understanding this concept, 
+      the demonstrations made a few simplifications and assumptions. For the interested reader, we will discuss those below: </p>
+      <br>
+    <p style="font-weight: bold;">Determining the addresses of the ‘out’ array and our SHELL code:
+      <div style="padding-left: 15px;">
+        <p>In the demonstration, we assumed that the addresses of the ‘out’ array and the SHELL code were known. However, a real attacker would 
+          have to determine these locations themselves. Using a program or debugger such a GDB, an attacker can step through the code and open up 
+          the assembly code, which reveals addresses. As such, an attacker can “disassemble” a program and determine the memory locations of 
+          variables they need with relative ease. </p>
+      </div>
+    </p>
+    <br>
+    <p style="font-weight: bold;">Endianness: 
+      <div style="padding-left: 15px;">
+        <p>Our flawed program also assumed the machine running it was little-endian. If you recall, the demonstration showed that we modified the least 
+          significant bit of %ebp. This only happens under the assumption the machine running the program is little endian. If the machine was big-endian, 
+          we would have modified the most significant bit of %ebp instead. How would an attacker need to change their strategy if this were the case? </p>
+        <p>In addition, since we assumed little-endianness of our machine, this also means the way the elements were depicted in the examples with an array
+          were technically backwards. However, depicting the array in a forward manner is more intuitive, and regardless, the main takeaway is 
+          that an array consists of contiguous memory. </p>
+      </div>
+    </p>
+    <br>
+    <p style="font-weight: bold;">Array Null terminators:
+      <div style="padding-left: 15px;">
+        <p>In C, the way a program determines the end of an array is through a character called a null terminator, represented as '\0'. Normally, an attacker 
+          would set the final character of an attack string to be this null terminator, however, for simplicity, the demonstration glossed over this.  </p>
+      </div>
+    </p>
+    <br>
+    <p style="font-weight: bold;">Pushing %ebp: 
+      <div style="padding-left: 15px;">
+        <p>Although standard to do, the demonstration made the assumption that %ebp was pushed onto the stack at all. Some programs do not do this, and 
+          these programs are actually easier to exploit since accessing %eip becomes easier. How would the attacker change the strategy if they found out 
+          %ebp was not actually pushed onto the stack? Where would %eip instead reside? </p>
+      </div>
+    </p>
+    <p style="font-weight: bold;">NOP sleds:
+      <div style="padding-left: 15px;">
+        <p>Oftentimes, an attacker will preload a buffer with instructions called NOP instructions (which stands for no-op), and does nothing except execute 
+        the following instruction. Attackers often do this so they can point %eip to a place with NOP instructions that precedes the SHELL code, then “slide in” 
+        to their SHELL code without having to directly point to it. In the demonstration, %eip was redirected to the SHELL code itself. In what cases may this 
+        NOP sled trick be useful?  </p>
+      </div>
+    </p>
+  </section>
+
+  <section>
+    <h2>Credits:</h2>
+    <div> 
+      <p><a href="https://observablehq.com/d/090e51dccef0949f">Introductory Exercise - Annie Denton</a></p>
+      <p><a href="https://observablehq.com/@mahda-soltani/the-stack">Stack - Mahda Soltani</a></p>
+      <p><a href="https://observablehq.com/@thechincheachilla/array-allocation">Array allocation - Reiden Chea</a></p>
+      <p><a href="https://observablehq.com/@thechincheachilla/shell-code">SHELL code - Reiden Chea</a></p>
+      <p><a href="https://observablehq.com/@thechincheachilla/the-off-by-one-exploit">Off-By-One Exploit - Reiden Chea, Annie Denton</a></p>
+    </div>
+    <h2>References:</h2>
+    <div>
+      <p>https://p5js.org/reference/</p>
+    </div>
+    <h2>Works Cited:</h2>
+    <div>
+      <p>Malkiewicz, Kylee. “This Year (so Far) in Buffer Overflows.” The Cybersecurity Stack, 8 Mar. 
+        2021, https://info.dovermicrosystems.com/blog/2021-buffer-overflows. 
+        </p>
+    </div>
+  </section>
+
+  <div class="footer">
+    <a href="https://courses.cs.washington.edu/courses/cse442/21au/">CSE 442 Data Visualization</a>
+    <a href="http://www.washington.edu">University of Washington</a>
+  </div>
+ </div>
+</body>
+</html> 
